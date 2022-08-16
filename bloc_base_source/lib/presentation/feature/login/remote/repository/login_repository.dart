@@ -1,4 +1,4 @@
-import '../../../../data/remote/service/result.dart';
+import '../../../../../core/common/result.dart';
 import '../../models/login_request.dart';
 import '../../models/login_response.dart';
 

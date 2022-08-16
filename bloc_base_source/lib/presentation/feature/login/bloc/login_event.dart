@@ -1,4 +1,4 @@
-import '../../../bloc/event.dart';
+import '../../../../core/bloc/event.dart';
 
 abstract class LoginEvent extends BaseEvent {
   @override

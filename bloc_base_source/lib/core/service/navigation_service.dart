@@ -2,13 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fimber/fimber.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../presentation/routers/router.dart';
+
 /// Singleton navigation service used for navigation between the screens.
 /// This service allows navigation from viewmodel without requiring the context
 /// details from the widget.
 @lazySingleton
 class NavigationService {
+  final AppRouter _router;
 
-  final StackRouter _router;
   NavigationService(this._router);
 
   Future push<T>(PageRouteInfo routeInfo) async {

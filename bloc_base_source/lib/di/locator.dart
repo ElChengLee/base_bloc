@@ -1,17 +1,18 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:bloc_base_source/data/local/dao/home_dao.dart';
+import 'package:bloc_base_source/presentation/routers/router.dart';
 import 'package:dio/dio.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:injectable/injectable.dart';
 
-import '../data/local/db/app_database.dart';
-import '../data/remote/service/service_constants.dart';
-import '../feature/login/remote/service/login_service.dart';
+import '../../data/local/db/app_database.dart';
+import '../../data/remote/service/service_constants.dart';
+import '../presentation/feature/login/remote/service/login_service.dart';
 import 'locator.config.dart';
-
 
 final locator = GetIt.instance..allowReassignment = true;
 
@@ -19,15 +20,20 @@ String token = "";
 String langApp = RequestHeaderValue.langVi;
 
 @injectableInit
-void setupLocator() {
+Future<void> setupLocator() async {
   _init(locator);
   $initGetIt(locator);
 }
 
 void _init(GetIt locator) {
+  _registerRouterBuilder(locator);
   _registerNetworkModules(locator);
   _registerServices(locator);
   _registerDatabase(locator);
+}
+
+void _registerRouterBuilder(GetIt locator) {
+  locator.registerLazySingleton<AppRouter>(() => AppRouter());
 }
 
 void _registerNetworkModules(GetIt locator) {

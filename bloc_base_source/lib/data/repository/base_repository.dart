@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:fimber/fimber.dart';
 
-import '../../data/remote/dto/base/model_base_response.dart';
-import '../../data/remote/service/error_type.dart';
-import '../../data/remote/service/result.dart';
+import '../../core/common/error_type.dart';
+import '../../core/common/result.dart';
+import '../remote/dto/model_base_response.dart';
 
 typedef EntityToModelMapper<Entity, Data> = Data? Function(Entity? entity);
 typedef SaveResult<Data> = Future Function(Data? data);

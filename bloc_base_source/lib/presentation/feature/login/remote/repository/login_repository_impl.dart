@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../data/remote/service/result.dart';
-import '../../../../repository/base/base_repository.dart';
+import '../../../../../core/common/result.dart';
+import '../../../../../data/repository/base_repository.dart';
 import '../../models/login_request.dart';
 import '../../models/login_response.dart';
 import '../service/login_service.dart';

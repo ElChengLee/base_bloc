@@ -1,8 +1,10 @@
-import 'package:bloc_base_source/bloc/state.dart';
+import 'package:bloc_base_source/presentation/routers/router.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../bloc/base_bloc.dart';
+import '../../../../core/bloc/base_bloc.dart';
+import '../../../../core/bloc/state.dart';
+import '../../../../di/locator.dart';
 import '../models/login_request.dart';
 import '../models/login_response.dart';
 import '../remote/repository/login_repository.dart';
@@ -23,12 +25,14 @@ class LoginBloc extends BaseBloc<LoginEvent, ProcessingState> {
       password = event.password;
     } else if (event is LoginSubmitted) {
      await safeDataCall(
-        emit,
+       emit,
         callToHost:
-            _loginRepository.performLogin(LoginRequest("0366541214", "123456")),
-        success: (LoginResponse data) {
-          Fimber.e("login success data - ${data.token}");
-          emit(SuccessState(data));
+            _loginRepository.performLogin(LoginRequest("0987654321", "123456")),
+        success: (Emitter<BaseState> emit, LoginResponse? data) {
+          Fimber.e("login success data - ${data?.token}");
+          hideDialogState();
+          token = data?.token ?? "";
+          navigationService.pushAndRemoveUntil(const HomeScreenRoute());
         },
       );
     }

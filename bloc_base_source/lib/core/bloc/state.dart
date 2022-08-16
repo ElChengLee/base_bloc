@@ -1,7 +1,11 @@
 import 'package:equatable/equatable.dart';
 
+abstract class BaseState extends Equatable {
+  const BaseState();
+}
+
 // NavigateState detects screen to navigate screen
-abstract class BaseNavigateState extends Equatable {
+abstract class BaseNavigateState extends BaseState {
   const BaseNavigateState();
 
   @override
@@ -9,7 +13,7 @@ abstract class BaseNavigateState extends Equatable {
 }
 
 // ProcessingState detects state when load data and view from host/database/init view
-abstract class ProcessingState extends Equatable {
+abstract class ProcessingState extends BaseState {
   const ProcessingState();
 
   @override
@@ -26,9 +30,11 @@ class InitialState extends ProcessingState {
   bool get stringify => true;
 }
 
-abstract class LoadingState extends ProcessingState {}
+abstract class ViewState extends ProcessingState {}
 
-class LoadingViewState extends LoadingState {
+abstract class DialogState extends ProcessingState {}
+
+class LoadingViewState extends ViewState {
   @override
   List<Object?> get props => [];
 
@@ -36,7 +42,7 @@ class LoadingViewState extends LoadingState {
   bool get stringify => true;
 }
 
-class LoadingDialogState extends LoadingState {
+class LoadingDialogState extends DialogState {
   @override
   List<Object?> get props => [];
 
@@ -56,9 +62,7 @@ class SuccessState<T> extends ProcessingState {
   bool get stringify => true;
 }
 
-abstract class ErrorState extends ProcessingState {}
-
-class ErrorViewState extends ErrorState {
+class ErrorViewState extends ViewState {
   final String? message;
 
   ErrorViewState({this.message = "Unknown Error Message"});
@@ -70,7 +74,7 @@ class ErrorViewState extends ErrorState {
   bool get stringify => true;
 }
 
-class ErrorDialogState extends ErrorState {
+class ErrorDialogState extends DialogState {
   final String? message;
 
   ErrorDialogState({this.message = "Unknown Error Message"});

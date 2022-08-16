@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../../data/remote/dto/base/model_base_response.dart';
-import '../../../../data/remote/service/service_constants.dart';
+import '../../../../../data/remote/dto/model_base_response.dart';
+import '../../../../../data/remote/service/service_constants.dart';
 import '../../models/login_request.dart';
 import '../../models/login_response.dart';
 
