@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fimber/fimber.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../presentation/routers/router.dart';
@@ -29,10 +30,12 @@ class NavigationService {
     }
   }
 
-  Future pushAndRemoveUntil(PageRouteInfo routeInfo) async {
+  Future pushAndRemoveUntil(
+    PageRouteInfo routeInfo, {
+    required RoutePredicate predicate,
+  }) async {
     try {
-      return _router.pushAndPopUntil(routeInfo,
-      predicate: (route) => route.isFirst);
+      return _router.pushAndPopUntil(routeInfo, predicate: predicate);
     } on Exception catch (e) {
       Fimber.e('Exception occurred in navigateTo: $e');
     }

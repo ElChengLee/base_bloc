@@ -33,7 +33,10 @@ class LoginBloc extends BaseBloc {
           Fimber.e("login success data - ${data?.token}");
           hideDialogState();
           token = data?.token ?? "";
-          navigationService.pushAndRemoveUntil(const HomeScreenRoute());
+          navigationService.pushAndRemoveUntil(
+            const HomeScreenRoute(),
+            predicate: (route) => false,
+          );
         },
       );
     }

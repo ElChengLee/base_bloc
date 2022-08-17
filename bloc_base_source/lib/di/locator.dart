@@ -52,7 +52,7 @@ void _registerNetworkModules(GetIt locator) {
                 "data": {"token": "Token data"}
               },
               // Reply would wait for one-sec before returning data.
-              delay: const Duration(seconds: 1),
+              delay: const Duration(seconds: 3),
             )
           },
       data: Matchers.any);
