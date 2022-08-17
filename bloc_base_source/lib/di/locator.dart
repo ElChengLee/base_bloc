@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:bloc_base_source/data/local/dao/home_dao.dart';
+import 'package:bloc_base_source/presentation/feature/home/remote/service/home_service.dart';
 import 'package:bloc_base_source/presentation/routers/router.dart';
 import 'package:dio/dio.dart';
 import 'package:fimber/fimber.dart';
@@ -56,6 +56,26 @@ void _registerNetworkModules(GetIt locator) {
             )
           },
       data: Matchers.any);
+  dioAdapter.onPost(
+      "/home/1.0",
+      (server) => {
+            server.reply(
+              HttpStatus.ok,
+              {
+                "requestId": "799637ab-4bf4-4bc4-86dd-7aa7a36488c7",
+                "status": "0",
+                "desc": "Success",
+                "message": "",
+                "data": [
+                  {"id": 1, "title": "Title 1", "description": "Description 1"},
+                  {"id": 2, "title": "Title 2", "description": "Description 2"}
+                ]
+              },
+              // Reply would wait for one-sec before returning data.
+              delay: const Duration(seconds: 5),
+            )
+          },
+      data: Matchers.any);
   dio.options = BaseOptions(
     baseUrl: ServiceConstants.baseUrl,
     contentType: NetworkRequestValues.contentType,
@@ -90,6 +110,7 @@ InterceptorsWrapper addInterceptor() {
 void _registerServices(GetIt locator) {
   locator
       .registerLazySingleton<LoginService>(() => LoginService(locator<Dio>()));
+  locator.registerLazySingleton<HomeService>(() => HomeService(locator<Dio>()));
 }
 
 void _registerDatabase(GetIt locator) async {

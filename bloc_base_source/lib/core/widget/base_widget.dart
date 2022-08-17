@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/base_bloc.dart';
 import '../bloc/event.dart';
 
-abstract class BaseView<B extends BaseBloc<BaseEvent, BaseState>>
-    extends StatelessWidget {
+abstract class BaseView<B extends BaseBloc> extends StatelessWidget {
   const BaseView({Key? key}) : super(key: key);
 
   @override
@@ -46,15 +45,21 @@ abstract class BaseView<B extends BaseBloc<BaseEvent, BaseState>>
       }, buildWhen: (BaseState previous, BaseState current) {
         // return true/false to determine whether or not
         // to rebuild the widget with state
-        return current is! DialogState;
-      }, builder: (context1, BaseState state) {
+        return rebuildViewWhen(previous, current);
+      }, builder: (contextBuilder, BaseState state) {
         // return widget here based on BlocA's state
-        return child(context1, state);
+        if (state is InitialState) {
+          contextBuilder.read<B>().add(InitialEvent());
+        }
+        return buildView(contextBuilder, state);
       }),
     );
   }
 
-  Widget child(BuildContext context, BaseState state);
+  bool rebuildViewWhen(BaseState previous, BaseState current) =>
+      current is! DialogState;
+
+  Widget buildView(BuildContext context, BaseState state);
 
   B createBloc();
 

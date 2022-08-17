@@ -11,8 +11,14 @@ import '../remote/repository/login_repository.dart';
 class LoginScreen extends BaseView<LoginBloc> {
   const LoginScreen({Key? key}) : super(key: key);
 
-  static Route<void> route() {
-    return MaterialPageRoute<void>(builder: (_) => const LoginScreen());
+  @override
+  Widget buildView(BuildContext context, BaseState state) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Login screen"),
+      ),
+      body: _buildBody(context),
+    );
   }
 
   Widget _buildBody(BuildContext context) {
@@ -47,16 +53,6 @@ class LoginScreen extends BaseView<LoginBloc> {
                 bloc.add(LoginSubmitted());
               })
         ]));
-  }
-
-  @override
-  Widget child(BuildContext context, BaseState state) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Demo Bloc"),
-      ),
-      body: _buildBody(context),
-    );
   }
 
   @override

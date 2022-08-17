@@ -4,14 +4,6 @@ abstract class BaseState extends Equatable {
   const BaseState();
 }
 
-// NavigateState detects screen to navigate screen
-abstract class BaseNavigateState extends BaseState {
-  const BaseNavigateState();
-
-  @override
-  List<Object?> get props => [];
-}
-
 // ProcessingState detects state when load data and view from host/database/init view
 abstract class ProcessingState extends BaseState {
   const ProcessingState();
