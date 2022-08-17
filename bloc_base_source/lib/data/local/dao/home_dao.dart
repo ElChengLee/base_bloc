@@ -6,10 +6,10 @@ const _tableName = 'HomeEntity';
 @dao
 abstract class HomeDao {
   @Query('select * FROM $_tableName')
-  Future<List<HomeEntity>> getArticles();
+  Future<List<HomeEntity>> getHomeData();
 
   @Insert(onConflict: OnConflictStrategy.replace)
-  Future<void> saveHome(List<HomeEntity> articles);
+  Future<void> saveHome(List<HomeEntity> data);
 
   @Query('select * from $_tableName where id = :id')
   Future<HomeEntity?> getTitleById(int id);

@@ -4,4 +4,5 @@ import '../../models/login_response.dart';
 
 abstract class LoginRepository {
   Future<Result<LoginResponse>> performLogin(LoginRequest model);
+
 }

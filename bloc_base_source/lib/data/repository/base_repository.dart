@@ -28,7 +28,7 @@ abstract class BaseRepository {
 
   Future<Result<Data>> safeApiCall<Data>(
     Future<ModelBaseResponse<Data>> call, {
-    SaveResult<Data?>? saveResult,
+    SaveResult<Data>? saveResult,
   }) async {
     Fimber.d("safeApiCall");
     try {
