@@ -72,7 +72,7 @@ void _registerNetworkModules(GetIt locator) {
                 ]
               },
               // Reply would wait for one-sec before returning data.
-              delay: const Duration(seconds: 5),
+              delay: const Duration(seconds: 10),
             )
           },
       data: Matchers.any);

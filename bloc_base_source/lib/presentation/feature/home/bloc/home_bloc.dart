@@ -17,7 +17,7 @@ class HomeBloc extends BaseBloc {
       callToHost: _repository.loadHomeData(),
       loading: (emit) => emit.call(LoadingViewState()),
       error: (emit, message) => emit.call(ErrorViewState(message: message)),
-      callToDb: _repository.loadHomeData(),
+      callToDb: _repository.getLocalHomeData(),
     );
   }
 
