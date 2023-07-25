@@ -30,8 +30,7 @@ abstract class BaseView<B extends BaseBloc> extends StatelessWidget {
                       child: const Text("Loading...")),
                 ],
               ));
-        }
-        if (state is ErrorDialogState) {
+        } else if (state is ErrorDialogState) {
           showDialogView(
               context: context,
               content: Row(
@@ -39,6 +38,22 @@ abstract class BaseView<B extends BaseBloc> extends StatelessWidget {
                   Container(
                       margin: const EdgeInsets.only(left: 7),
                       child: Text("Error : ${state.message}")),
+                ],
+              ));
+        } else if (state is TokenExpiredErrorDialogState) {
+          showDialogView(
+              context: context,
+              content: Column(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.only(left: 7),
+                      child: Text("Error : ${state.message}")),
+                  ElevatedButton(
+                      child: const Text("Login"),
+                      onPressed: () {
+                        final bloc = BlocProvider.of<BaseBloc>(context);
+                        bloc.add(TokenExpiredEvent());
+                      })
                 ],
               ));
         }

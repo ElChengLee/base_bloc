@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:bloc_base_source/core/widget/base_list_view_widget.dart';
 import 'package:bloc_base_source/presentation/feature/home/bloc/home_bloc.dart';
 import 'package:bloc_base_source/presentation/feature/home/model/home_response.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../di/locator.dart';
 
+@RoutePage()
 class HomeScreen extends BaseListView<HomeBloc, HomeResponse> {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -31,6 +33,6 @@ class HomeScreen extends BaseListView<HomeBloc, HomeResponse> {
 
   @override
   AppBar? buildAppBar(BuildContext context) => AppBar(
-        title: const Text("Home screen"),
-      );
+    title: const Text("Home screen"),
+  );
 }

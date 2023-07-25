@@ -1,4 +1,4 @@
-import 'package:bloc_base_source/presentation/routers/router.dart';
+import 'package:bloc_base_source/presentation/routers/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'di/locator.dart';

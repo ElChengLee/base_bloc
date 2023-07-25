@@ -1,4 +1,4 @@
-import 'package:bloc_base_source/presentation/routers/router.dart';
+import 'package:bloc_base_source/presentation/routers/app_router.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +34,7 @@ class LoginBloc extends BaseBloc {
           hideDialogState();
           token = data?.token ?? "";
           navigationService.pushAndRemoveUntil(
-            const HomeScreenRoute(),
+            const HomeRoute(),
             predicate: (route) => false,
           );
         },

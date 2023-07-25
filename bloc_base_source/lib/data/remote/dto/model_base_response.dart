@@ -22,7 +22,7 @@ class ModelBaseResponse<T> {
 
   bool isTimeOut() => timeOut == status;
 
-  bool isTokenExprired() => tokenExprired == status;
+  bool isTokenExpired() => tokenExprired == status;
 
   factory ModelBaseResponse.fromJson(
       Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>

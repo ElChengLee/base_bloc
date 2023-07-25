@@ -77,3 +77,13 @@ class ErrorDialogState extends DialogState {
   @override
   bool get stringify => true;
 }
+
+class TokenExpiredErrorDialogState extends DialogState {
+  final String message = "Token expired, please re-login";
+
+  @override
+  List<Object?> get props => [message];
+
+  @override
+  bool get stringify => true;
+}

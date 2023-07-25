@@ -1,7 +1,8 @@
 import 'package:bloc_base_source/data/local/dao/home_dao.dart';
+import 'package:bloc_base_source/di/locator.config.dart';
 import 'package:bloc_base_source/presentation/feature/home/remote/service/home_service.dart';
 import 'package:bloc_base_source/presentation/remote/dio_network.dart';
-import 'package:bloc_base_source/presentation/routers/router.dart';
+import 'package:bloc_base_source/presentation/routers/app_router.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
@@ -16,10 +17,10 @@ final locator = GetIt.instance..allowReassignment = true;
 String token = "";
 String langApp = RequestHeaderValue.langVi;
 
-@injectableInit
+@InjectableInit()
 Future<void> setupLocator() async {
   _init(locator);
-  $initGetIt(locator);
+  locator.init();
 }
 
 void _init(GetIt locator) {

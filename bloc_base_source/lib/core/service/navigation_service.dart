@@ -3,7 +3,7 @@ import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../presentation/routers/router.dart';
+import '../../presentation/routers/app_router.dart';
 
 /// Singleton navigation service used for navigation between the screens.
 /// This service allows navigation from viewmodel without requiring the context

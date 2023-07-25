@@ -12,6 +12,6 @@ part 'login_service.g.dart';
 abstract class LoginService {
   factory LoginService(Dio dio) = _LoginService;
 
-  @POST('/authenticate' + ServiceConstants.version)
+  @POST('/authenticate/' + ServiceConstants.version)
   Future<ModelBaseResponse<LoginResponse>> performLogin(@Body() LoginRequest model);
 }

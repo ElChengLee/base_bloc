@@ -26,8 +26,7 @@ class DioNetwork {
     final dioAdapter = DioAdapter(dio: dio);
     dioAdapter.onPost(
         "/authenticate/1.0",
-        (server) => {
-              server.reply(
+        (server) => server.reply(
                 HttpStatus.ok,
                 {
                   "requestId": "",
@@ -38,13 +37,11 @@ class DioNetwork {
                 },
                 // Reply would wait for one-sec before returning data.
                 delay: const Duration(seconds: 3),
-              )
-            },
+              ),
         data: Matchers.any);
     dioAdapter.onPost(
         "/home/1.0",
-        (server) => {
-              server.reply(
+        (server) => server.reply(
                 HttpStatus.ok,
                 {
                   "requestId": "799637ab-4bf4-4bc4-86dd-7aa7a36488c7",
@@ -66,8 +63,21 @@ class DioNetwork {
                 },
                 // Reply would wait for one-sec before returning data.
                 delay: const Duration(seconds: 10),
-              )
-            },
+              ),
+        data: Matchers.any);
+    dioAdapter.onPost(
+        "/checkTokenExpired/1.0",
+        (server) => server.reply(
+                HttpStatus.ok,
+                {
+                  "requestId": "799637ab-4bf4-4bc4-86dd-7aa7a36488c7",
+                  "status": "401",
+                  "desc": "Error",
+                  "message": "Token Expired",
+                },
+                // Reply would wait for one-sec before returning data.
+                delay: const Duration(seconds: 10),
+              ),
         data: Matchers.any);
   }
 

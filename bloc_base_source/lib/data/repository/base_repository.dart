@@ -36,7 +36,7 @@ abstract class BaseRepository {
       if (response.isSuccess()) {
         await saveResult?.call(response.data);
         return Success(response.data);
-      } else if (response.isTokenExprired()) {
+      } else if (response.isTokenExpired()) {
         return Error(ErrorType.TOKEN_EXPIRED, response.message ?? "Unknown Error");
       } else {
         Fimber.e("response.message -> ${response.message}");

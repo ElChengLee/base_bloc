@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +9,7 @@ import '../bloc/login_bloc.dart';
 import '../bloc/login_event.dart';
 import '../remote/repository/login_repository.dart';
 
+@RoutePage()
 class LoginScreen extends BaseView<LoginBloc> {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -46,7 +48,7 @@ class LoginScreen extends BaseView<LoginBloc> {
                 labelText: "Password",
               )),
           const SizedBox(height: 20),
-          RaisedButton(
+          ElevatedButton(
               child: const Text("Login"),
               onPressed: () {
                 final bloc = BlocProvider.of<LoginBloc>(context);

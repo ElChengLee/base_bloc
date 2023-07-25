@@ -8,3 +8,5 @@ abstract class BaseEvent extends Equatable {
 }
 
 class InitialEvent extends BaseEvent {}
+
+class TokenExpiredEvent extends BaseEvent {}
