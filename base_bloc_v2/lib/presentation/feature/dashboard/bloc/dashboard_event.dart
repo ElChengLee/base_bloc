@@ -5,4 +5,11 @@ abstract class DashboardEvent extends BaseEvent {
   List<Object?> get props => [];
 }
 
-class LoadHomeView extends DashboardEvent {}
+class TapNaviEvent extends DashboardEvent {
+  TapNaviEvent(this.index);
+
+  final int index;
+
+  @override
+  List<Object> get props => [index];
+}

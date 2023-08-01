@@ -34,7 +34,7 @@ class LoginBloc extends BaseBloc {
           hideDialogState();
           token = data?.token ?? "";
           navigationService.pushAndRemoveUntil(
-            const HomeRoute(),
+            const DashboardRoute(),
             predicate: (route) => false,
           );
         },
